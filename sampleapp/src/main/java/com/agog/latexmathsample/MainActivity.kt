@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.agog.mathdisplay.MTFontManager
 import com.agog.mathdisplay.MTMathGenerator
 import com.agog.mathdisplay.MTMathView
@@ -197,6 +198,10 @@ class MainActivity : AppCompatActivity() {
                 for (eq in sampleEquations) {
                     eq.textColor = Color.MAGENTA
                 }
+                return true
+            }
+            R.id.checkMenu -> {
+                Toast.makeText(this, "dangdut", Toast.LENGTH_LONG).show()
                 return true
             }
 
