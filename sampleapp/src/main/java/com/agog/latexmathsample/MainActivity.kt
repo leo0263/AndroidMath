@@ -201,7 +201,8 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.checkMenu -> {
-                Toast.makeText(this, "dangdut", Toast.LENGTH_LONG).show()
+                val checkActivityIntent = CheckActivity.createIntent(this)
+                startActivity(checkActivityIntent)
                 return true
             }
 
