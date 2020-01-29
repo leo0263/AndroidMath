@@ -1,4 +1,5 @@
-# Long Minus Sign
+# ----------------------------------------------------------------
+# -- Long Minus Sign --
 
 e=mc^2−ab^2
 (−2)(−3)(+4)(−5)
@@ -6,13 +7,3 @@ e=mc^2−ab^2
 #the above math formula should show:
 #e = mc^2 - ab^2
 #(-2)(-3)(+4)(-5)
-
-# ----------------------------------------------------------------
-
-# Custom Latex Color
-
-color{turquoise}{turquoise^{color}}
-color{orange}{orange^{color}}
-
-# The above text should have a color of turquoise and orange, respectively.
-# ----------------------------------------------------------------

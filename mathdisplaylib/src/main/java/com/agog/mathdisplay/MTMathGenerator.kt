@@ -2,7 +2,7 @@ package com.agog.mathdisplay
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
+import android.util.Log
 import com.agog.mathdisplay.parse.MTLineStyle
 import com.agog.mathdisplay.parse.MTMathListBuilder
 import com.agog.mathdisplay.render.MTFont
@@ -49,7 +49,7 @@ object MTMathGenerator {
             if (font == null) font = defaultFont
         }
 
-        val mathList = MTMathListBuilder.buildFromString(latexString)
+        val mathList = MTMathListBuilder.buildFromString(sanitize(latexString))
 
         if (mathList != null && font != null) {
             val bitmap = Bitmap.createBitmap(bitmapWidth, bitmapHeight, Bitmap.Config.ARGB_8888)
@@ -72,5 +72,16 @@ object MTMathGenerator {
         if (defaultFont == null) {
             defaultFont = MTFontManager.latinModernFontWithSize(defaultFontSize)
         }
+    }
+
+    private fun sanitize(str: String): String {
+        var sanitizedStr = str
+
+        Log.i("sanitize", "before : $str")
+        sanitizedStr = sanitizedStr.replace("−", "-")
+
+
+        Log.i("sanitize", "after  : $sanitizedStr")
+        return sanitizedStr
     }
 }
