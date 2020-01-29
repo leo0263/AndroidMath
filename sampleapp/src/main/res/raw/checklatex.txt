@@ -1,0 +1,7 @@
+# -- Require Cancel Command --
+
+# cancel command?
+
+\cancel{1}
+
+# cancel not supported

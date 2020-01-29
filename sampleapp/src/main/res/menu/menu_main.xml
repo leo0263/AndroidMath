@@ -4,8 +4,8 @@
     tools:context="com.agog.latexmathsample.com.agog.latexmath.MainActivity">
 
     <item
-        android:title="Font"
         android:id="@+id/menufont"
+        android:title="Font"
         app:showAsAction="always">
         <menu>
             <group
@@ -24,12 +24,20 @@
                     android:id="@+id/fontxits"
                     android:checkable="true"
                     android:title="XITS Math" />
+                <item
+                    android:id="@+id/colorblack"
+                    android:checkable="false"
+                    android:title="Font Color: Black" />
+                <item
+                    android:id="@+id/colorpurple"
+                    android:checkable="false"
+                    android:title="Font Color: Purple" />
             </group>
         </menu>
     </item>
     <item
-        android:title="Size"
         android:id="@+id/menusize"
+        android:title="Size"
         app:showAsAction="always">
         <menu>
             <group
@@ -56,8 +64,8 @@
         </menu>
     </item>
     <item
-        android:title="Mode"
         android:id="@+id/menumode"
+        android:title="Mode"
         app:showAsAction="always">
         <menu>
             <group
@@ -66,8 +74,8 @@
                 android:menuCategory="container">
                 <item
                     android:id="@+id/modedisplay"
-                    android:checked="true"
                     android:checkable="true"
+                    android:checked="true"
                     android:title="Display" />
                 <item
                     android:id="@+id/modetext"
@@ -85,21 +93,8 @@
         </menu>
     </item>
     <item
-        android:title="Color"
-        app:showAsAction="always">
-        <menu>
-            <group
-                android:id="@+id/group4"
-                android:checkableBehavior="none">
-                <item
-                    android:id="@+id/colorblack"
-                    android:title="Black" />
-                <item
-                    android:id="@+id/colorpurple"
-                    android:title="Purple" />
-            </group>
-        </menu>
-    </item>
-
+        android:id="@+id/checkMenu"
+        android:title="Check"
+        app:showAsAction="always" />
 
 </menu>
