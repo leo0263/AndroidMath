@@ -1,24 +1,7 @@
-# ----------------------------------------------------------------
-# -- Text Effect Test --
+# -- Require Cancel Command --
 
-# The `\textbf` command should create a **BOLD** font. Let's check it out:
+# cancel command?
 
-\text{This is a normal text inside a latex \text command}
+\cancel{1}
 
-\textbf{This is bold latex text created with \textbf command}
-
-# Why don't we check other latex font effect:
-
-\textit{words in italics}
-
-\textbf{words in bold}
-
-\texttt{words in teletype}
-
-\textsf{sans serif words}
-
-\textrm{roman words}
-
-\underline{underlined words}
-
-# do they works?
+# cancel not supported

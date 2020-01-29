@@ -64,11 +64,11 @@ class CheckActivity : AppCompatActivity() {
             }
         }
 
-        //runMultilineTest()
+        runMultilineTest()
     }
 
     private fun createLatexImageView(strLatex: String) {
-        val latexBitmap: Bitmap? = MTMathGenerator.createBitmap(strLatex)
+        val latexBitmap: Bitmap? = MTMathGenerator.createBitmap(strLatex, isDebugOn = true)
 
         if (latexBitmap != null) {
             val latexImageView = createImageView(latexBitmap)
@@ -82,10 +82,18 @@ class CheckActivity : AppCompatActivity() {
     }
 
     private fun runMultilineTest() {
-        val multilineStr = "\\begin{align*}\n" +
-                "x^2 + y^2 &= 1 \\\\\n" +
-                "y &= \\sqrt{1 - x^2}\n" +
-                "\\end{align*}\n"
+        val multilineStr = "\\left|\\begin{matrix}\n" +
+                "6 & 1 & 3\\\\ \n" +
+                "2 & 3 & 2\\\\ \n" +
+                "1 & 1 & 0\\end{matrix}\\right|\n" +
+                "=\n" +
+                "\\left|\\begin{matrix}\n" +
+                "\\require{cancel}\\cancel{6} & \\require{cancel}\\cancel{1} & \\require{cancel}\\cancel{3}\\\\ \n" +
+                "\\require{cancel}\\cancel{2} & \\require{cancel}\\cancel{3} & \\require{cancel}\\cancel{2}\\\\ \n" +
+                "\\require{cancel}\\cancel{1} & \\require{cancel}\\cancel{1} & \\require{cancel}\\cancel{0}\\end{matrix}\\right|\n" +
+                "\\begin{matrix}\\require{cancel}\\cancel{6} & \\require{cancel}\\cancel{1}\\\\ \n" +
+                "\\require{cancel}\\cancel{2} & \\require{cancel}\\cancel{3} \\\\ \n" +
+                "\\require{cancel}\\cancel{1} & \\require{cancel}\\cancel{1}\\end{matrix} "
 
         createLatexImageView(multilineStr)
     }
