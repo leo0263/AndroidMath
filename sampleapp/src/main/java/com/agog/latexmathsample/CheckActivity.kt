@@ -82,13 +82,10 @@ class CheckActivity : AppCompatActivity() {
     }
 
     private fun runMultilineTest() {
-        val multilineStr = "\\[\n" +
-                "M=\n" +
-                "  \\begin{bmatrix}\n" +
-                "    1 & 2 & 3 & 4 & 5 \\\\\n" +
-                "    3 & 4 & 5 & 6 & 7\n" +
-                "  \\end{bmatrix}\n" +
-                "\\]"
+        val multilineStr = "\\begin{align*}\n" +
+                "x^2 + y^2 &= 1 \\\\\n" +
+                "y &= \\sqrt{1 - x^2}\n" +
+                "\\end{align*}\n"
 
         createLatexImageView(multilineStr)
     }

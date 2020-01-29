@@ -107,6 +107,10 @@ object MTMathGenerator {
         // fix long minus sign
         sanitizedStr = sanitizedStr.replace("−", "-")
 
+        // fix align
+        sanitizedStr = sanitizedStr.replace("{align}", "{aligned}")
+        sanitizedStr = sanitizedStr.replace("{align*}", "{aligned}")
+
 
         Log.i("sanitize", "after  : $sanitizedStr")
         return sanitizedStr

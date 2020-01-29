@@ -1,22 +1,14 @@
 # ----------------------------------------------------------------
-# -- Border Test (hardcoded) --
+# -- Align Test --
 
-# This latex code should create a full border 3x3 table:
+# This latex code should create two equation (x^2 + y^2 = 1) and (y = sqrt{1 - x^2}) with align on the "=" symbol
 
-\left[
-    \begin{array}{c|c|c}
-    1 & 2 & 3 \\ \hline
-    4 & 5 & 6 \\ \hline
-    7 & 8 & 9
-    \end{array}
-\right]
+\begin{align*} x^2 + y^2 &= 1 \\ y &= \sqrt{1 - x^2} \end{align*}
 
-# This incorporate a multi-line latex syntax, which cannot be tested like this, need to add one hardcoded test
-# Maybe need to update the engine to accept multiline syntax
-# For example here is the same syntax on a single line:
+# Is it working?
+# It seems the align command is not working!!!
+# What if we change it to \aligned instead
 
-\left[\begin{array}{c|c|c} 1 & 2 & 3 \\ \hline 4 & 5 & 6 \\ \hline 7 & 8 & 9 \end{array}\right]
+\begin{aligned} x^2 + y^2 &= 1 \\ y &= \sqrt{1 - x^2} \end{aligned}
 
-# Does it show the matrix properly?
-# It seems we cannot support {array} syntax
-# Also, successfully convert multiline syntax into oneline on this case
+# OK it worked!!! need to push this fix on sanitizer
