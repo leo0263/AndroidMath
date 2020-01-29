@@ -65,6 +65,7 @@ object MTMathGenerator {
             canvas.translate(100.0f, 100.0f) // We shift this to catch any coordinate system errors
 
             val display = MTTypesetter.createLineForMathList(mathList, font, MTLineStyle.KMTLineStyleText)
+            display.textColor = font.color
             display.draw(canvas)
 
             return bitmap.trim(margin = bitmapMargin)
