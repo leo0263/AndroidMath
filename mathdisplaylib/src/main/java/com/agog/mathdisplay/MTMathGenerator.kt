@@ -43,6 +43,8 @@ object MTMathGenerator {
             bitmapHeight: Int = defaultHeight,
             bitmapMargin: Int = defaultMargin
     ): Bitmap? {
+        if (!passScreening(latexString)) return null
+
         var font = fontParam
         if (defaultFont == null) {
             initializeDefaultFont()
@@ -66,6 +68,17 @@ object MTMathGenerator {
         }
 
         return null
+    }
+
+    private fun passScreening(latexString: String): Boolean {
+        val str = latexString.toLowerCase()
+
+        if (str.contains("\\color")) {
+            Log.i("filter", "denied \\color syntax on: $str")
+            return false
+        }
+
+        return true
     }
 
     private fun initializeDefaultFont() {
