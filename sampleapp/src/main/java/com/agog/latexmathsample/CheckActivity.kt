@@ -39,9 +39,6 @@ class CheckActivity : AppCompatActivity() {
     }
 
     private fun checkLatexCompatibility() {
-        //MTMathGenerator.defaultFont = MTFontManager.latinModernFontWithSize(20f)
-        //MTFontManager.setContext(this)
-
         val layoutPad = 16
         val layoutParams = LinearLayout.LayoutParams(0, 0)
         layoutParams.setMargins(layoutPad, layoutPad, layoutPad, layoutPad)
@@ -51,6 +48,7 @@ class CheckActivity : AppCompatActivity() {
 
         inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
 
+        // create test(s) from checklatex.txt file
         lineList.forEach {
             if (it.isNotBlank()) {
                 if (it[0] == '#') {
@@ -60,22 +58,39 @@ class CheckActivity : AppCompatActivity() {
                     println("textSize ${tv.textSize}")
                     checkLatexLayout.addView(tv)
                 } else {
-                    val latexBitmap: Bitmap? = MTMathGenerator.createBitmap(it)
+                    createLatexImageView(it)
 
-                    if (latexBitmap != null) {
-//                        val latexDrawable = bitmapToDrawable(latexBitmap)
-                        val latexImageView = createImageView(latexBitmap)
-//                        latexImageView.setImageDrawable(latexDrawable)
-                        checkLatexLayout.addView(latexImageView)
-                    } else {
-                        val errorRenderTV = TextView(this)
-                        errorRenderTV.text = "error rendering: $it"
-                        errorRenderTV.setTextColor(Color.RED)
-                        checkLatexLayout.addView(errorRenderTV)
-                    }
                 }
             }
         }
+
+        runMultilineTest()
+    }
+
+    private fun createLatexImageView(strLatex: String) {
+        val latexBitmap: Bitmap? = MTMathGenerator.createBitmap(strLatex)
+
+        if (latexBitmap != null) {
+            val latexImageView = createImageView(latexBitmap)
+            checkLatexLayout.addView(latexImageView)
+        } else {
+            val errorRenderTV = TextView(this)
+            errorRenderTV.text = "error rendering: $strLatex"
+            errorRenderTV.setTextColor(Color.RED)
+            checkLatexLayout.addView(errorRenderTV)
+        }
+    }
+
+    private fun runMultilineTest() {
+        val multilineStr = "\\[\n" +
+                "M=\n" +
+                "  \\begin{bmatrix}\n" +
+                "    1 & 2 & 3 & 4 & 5 \\\\\n" +
+                "    3 & 4 & 5 & 6 & 7\n" +
+                "  \\end{bmatrix}\n" +
+                "\\]"
+
+        createLatexImageView(multilineStr)
     }
 
     // from this: https://stackoverflow.com/questions/8232608/fit-image-into-imageview-keep-aspect-ratio-and-then-resize-imageview-to-image-d

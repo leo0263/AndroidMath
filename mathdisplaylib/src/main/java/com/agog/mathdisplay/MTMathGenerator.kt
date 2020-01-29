@@ -61,7 +61,6 @@ object MTMathGenerator {
             canvas.translate(100.0f, 100.0f) // We shift this to catch any coordinate system errors
 
             val display = MTTypesetter.createLineForMathList(mathList, font, MTLineStyle.KMTLineStyleText)
-            //display.textColor = font.color
             display.draw(canvas)
 
             return bitmap.trim(margin = bitmapMargin)
@@ -78,6 +77,16 @@ object MTMathGenerator {
             return false
         }
 
+        if (str.contains("{array}")) {
+            Log.i("filter", "denied {array} syntax on: $str")
+            return false
+        }
+
+        if (str.contains("matrix}")) {
+            Log.i("filter", "denied *matrix} syntax on: $str")
+            return false
+        }
+
         return true
     }
 
@@ -89,8 +98,13 @@ object MTMathGenerator {
 
     private fun sanitize(str: String): String {
         var sanitizedStr = str
+        Log.i("sanitize", "before : $sanitizedStr")
 
-        Log.i("sanitize", "before : $str")
+        // convert to single line
+        sanitizedStr = sanitizedStr.replace("\n", "")
+        sanitizedStr = sanitizedStr.replace("\r", "")
+
+        // fix long minus sign
         sanitizedStr = sanitizedStr.replace("−", "-")
 
 

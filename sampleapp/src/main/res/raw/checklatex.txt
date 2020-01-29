@@ -1,9 +1,22 @@
 # ----------------------------------------------------------------
-# -- Custom Latex Color --
+# -- Border Test (hardcoded) --
 
-\color{turquoise}{turquoise^{color}}
-\color{orange}{orange^{color}}
+# This latex code should create a full border 3x3 table:
 
+\left[
+    \begin{array}{c|c|c}
+    1 & 2 & 3 \\ \hline
+    4 & 5 & 6 \\ \hline
+    7 & 8 & 9
+    \end{array}
+\right]
 
-# The above text should have a color of turquoise and orange, respectively.
-# Maybe just disable color syntax entirely
+# This incorporate a multi-line latex syntax, which cannot be tested like this, need to add one hardcoded test
+# Maybe need to update the engine to accept multiline syntax
+# For example here is the same syntax on a single line:
+
+\left[\begin{array}{c|c|c} 1 & 2 & 3 \\ \hline 4 & 5 & 6 \\ \hline 7 & 8 & 9 \end{array}\right]
+
+# Does it show the matrix properly?
+# It seems we cannot support {array} syntax
+# Also, successfully convert multiline syntax into oneline on this case
