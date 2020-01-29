@@ -64,7 +64,7 @@ class CheckActivity : AppCompatActivity() {
             }
         }
 
-        runMultilineTest()
+        //runMultilineTest()
     }
 
     private fun createLatexImageView(strLatex: String) {
